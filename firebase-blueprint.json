@@ -1,0 +1,83 @@
+{
+  "entities": {
+    "users": {
+      "title": "User Profiles",
+      "description": "User account profiles, active plan, and monthly usage limits",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "plan": { "type": "string", "enum": ["gratis", "basico", "pro", "pro_annual", "pro_plus", "premium"] },
+        "hasActiveSubscription": { "type": "boolean" },
+        "ebooksCountThisMonth": { "type": "number" },
+        "subscriptionDate": { "type": "string" },
+        "planExpiryDate": { "type": "string" },
+        "monthResetDate": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["uid", "email", "plan", "hasActiveSubscription"]
+    },
+    "users/{uid}/ebooks": {
+      "title": "Full Ebook Documents",
+      "description": "Complete ebook data generated or edited by the user including title, pages serialized as JSON string, colors, and fonts",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "author": { "type": "string" },
+        "genre": { "type": "string" },
+        "targetAudience": { "type": "string" },
+        "tone": { "type": "string" },
+        "description": { "type": "string" },
+        "pageCount": { "type": "number" },
+        "pagesJson": { "type": "string" },
+        "template": { "type": "string" },
+        "fontHeading": { "type": "string" },
+        "fontBody": { "type": "string" },
+        "primaryColor": { "type": "string" },
+        "accentColor": { "type": "string" },
+        "headingColor": { "type": "string" },
+        "bodyColor": { "type": "string" },
+        "coverImageUrl": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "title", "createdAt"]
+    },
+    "users/{uid}/ebooks_meta": {
+      "title": "Lightweight Ebook Metadata",
+      "description": "Minimal metadata log for generated ebooks to track limits without storing heavy ebook content in Firestore",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "genre": { "type": "string" },
+        "pageCount": { "type": "number" },
+        "language": { "type": "string" },
+        "template": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "title", "createdAt"]
+    },
+    "payments": {
+      "title": "Payment Transactions",
+      "description": "Mercado Pago payment records and plan activations",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "planId": { "type": "string", "enum": ["basico", "pro"] },
+        "amount": { "type": "number" },
+        "status": { "type": "string" },
+        "mercadoPagoPaymentId": { "type": "string" },
+        "mercadoPagoPreferenceId": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "planId", "status"]
+    }
+  }
+}

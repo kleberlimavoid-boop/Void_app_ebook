@@ -1,0 +1,6 @@
+{
+  "name": "VOID",
+  "description": "Plataforma simplificada e moderna para criar, personalizar e exportar e-books profissionais com Inteligência Artificial em formato PDF.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

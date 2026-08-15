@@ -1,0 +1,28 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // User profile document rules
+    match /users/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow create, update: if request.auth != null && request.auth.uid == userId;
+      allow delete: if false;
+
+      // Full ebooks subcollection
+      match /ebooks/{ebookId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+
+      // Lightweight ebook metadata subcollection
+      match /ebooks_meta/{ebookId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+    }
+
+    // Payment transaction records
+    match /payments/{paymentId} {
+      allow read: if request.auth != null && (resource == null || resource.data.userId == request.auth.uid);
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if false;
+    }
+  }
+}
