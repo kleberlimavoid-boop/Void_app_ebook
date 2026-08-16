@@ -1,0 +1,286 @@
+@import "tailwindcss";
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 16s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes softGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes floatingPatch1 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(40px, -15px) scale(1.3);
+    opacity: 0.9;
+  }
+}
+
+@keyframes floatingPatch2 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1.1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-35px, 20px) scale(1.4);
+    opacity: 0.85;
+  }
+}
+
+.animate-patch-1 {
+  animation: floatingPatch1 5s ease-in-out infinite;
+}
+
+.animate-patch-2 {
+  animation: floatingPatch2 7s ease-in-out infinite;
+}
+
+@keyframes softBlueGlow {
+  0%, 100% {
+    box-shadow: 0 10px 30px -5px rgba(37, 99, 235, 0.5), 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 15px 40px -5px rgba(29, 78, 216, 0.7), 0 0 30px rgba(96, 165, 250, 0.5);
+  }
+}
+
+.animate-blue-glow {
+  animation: softBlueGlow 3.5s ease-in-out infinite;
+}
+
+@keyframes goldPulseGlow {
+  0%, 100% {
+    box-shadow: 0 12px 35px -5px rgba(245, 158, 11, 0.4), 0 0 20px rgba(217, 119, 6, 0.2);
+  }
+  50% {
+    box-shadow: 0 20px 50px -5px rgba(245, 158, 11, 0.75), 0 0 35px rgba(168, 85, 247, 0.45);
+  }
+}
+
+.animate-gold-glow {
+  animation: goldPulseGlow 3.5s ease-in-out infinite;
+}
+
+.mask-gradient {
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+/* ====================================================
+   MOTOR DE IMPRESSÃO NATIVO (@media print)
+   Geração de PDF com 100% de Fidelidade e Vetores Nativos
+   ==================================================== */
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    box-sizing: border-box !important;
+  }
+
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #0f172a !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Oculta todos os componentes de interface comuns em tela */
+  .no-print,
+  .screen-only,
+  header,
+  nav,
+  aside,
+  footer,
+  button,
+  .modal-overlay,
+  .modal-backdrop,
+  #header-nav,
+  #step-indicator,
+  .app-screen-content {
+    display: none !important;
+  }
+
+  /* Container de páginas do E-book */
+  #ebook-print-root {
+    display: block !important;
+    position: static !important;
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+    overflow: visible !important;
+    z-index: 99999 !important;
+  }
+
+  .ebook-page {
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    position: relative !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #0f172a;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  .card,
+  .checklist-item,
+  .badge,
+  .highlight-card,
+  .metric-card {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .ebook-illustration-container {
+    width: 100% !important;
+    overflow: hidden !important;
+    border-radius: 12px !important;
+    margin: 14px 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .ebook-illustration-box {
+    width: 100% !important;
+    height: 220px !important;
+    max-height: 240px !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    position: relative !important;
+  }
+
+  .ebook-illustration-img {
+    width: 100% !important;
+    height: 220px !important;
+    max-height: 240px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    border-radius: 12px !important;
+    display: block !important;
+  }
+}
+
+.ebook-illustration-container {
+  width: 100% !important;
+  overflow: hidden !important;
+  border-radius: 12px !important;
+  margin: 14px 0 !important;
+  box-sizing: border-box !important;
+}
+
+.ebook-illustration-box {
+  width: 100% !important;
+  height: 220px !important;
+  max-height: 240px !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.ebook-illustration-img {
+  width: 100% !important;
+  height: 220px !important;
+  max-height: 240px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border-radius: 12px !important;
+  display: block !important;
+}
+
+@media screen {
+  #ebook-print-root {
+    display: none !important;
+  }
+}
